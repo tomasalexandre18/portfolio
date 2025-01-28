@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Test Place</title>
+    <script src="js/bootstrap.js"></script>
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <style>
+        @keyframes switch {
+            0% {
+                transform: translateY(0);
+            }
+            100% {
+                transform: translateY(-100%);
+            }
+        }
+
+        .show-second {
+            animation: switch 1s forwards ease-in-out;
+        }
+
+        .show-first {
+            animation: switch 1s reverse forwards ease-in-out;
+        }
+
+    </style>
+    <script type="module">
+        let first = document.getElementById('first');
+        let second = document.getElementById('second');
+        let btn1 = first.querySelector('button');
+        let btn2 = second.querySelector('button');
+
+        function switchPage() {
+            if (first.classList.contains('show-first')) {
+                first.classList.remove('show-first');
+                second.classList.remove('show-first');
+                setTimeout(() => {
+                    first.classList.add('show-second');
+                    second.classList.add('show-second');
+                }, 1);
+            } else {
+                first.classList.remove('show-second');
+                second.classList.remove('show-second');
+                setTimeout(() => {
+                    first.classList.add('show-first');
+                    second.classList.add('show-first');
+                }, 1);
+            }
+        }
+
+        btn1.addEventListener('click', () => {
+            switchPage();
+        });
+        btn2.addEventListener('click', () => {
+            switchPage();
+        });
+
+    </script>
+</head>
+<body class="overflow-hidden">
+    <div id="first" class="d-flex justify-content-center align-items-center flex-column show-first" style="height: 100vh;">
+        <h1>Hello World!</h1>
+        <button class="btn btn-primary">Continue ?</button>
+    </div>
+    <div id="second" class="d-flex justify-content-center align-items-center flex-column" style="height: 100vh;">
+        <h1>Goodbye World!</h1>
+        <button class="btn btn-danger">Exit ?</button>
+    </div>
+</body>
+</html>
