@@ -51,6 +51,16 @@
     #link > * {
       transition: all 0.5s;
     }
+
+    #iframeMemo {
+        /* From https://css.glass */
+        background: rgba(49, 49, 49, 0.25);
+        border-radius: 16px;
+        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        backdrop-filter: blur(9.8px);
+        -webkit-backdrop-filter: blur(9.8px);
+        border: 1px solid rgba(49, 49, 49, 0.3);
+    }
   </style>
 </head>
 <body>
@@ -124,11 +134,11 @@
 
         <div class="position-relative d-flex gap-3 d-md-flex justify-content-center align-items-center flex-wrap" style="margin-top: 80px;">
             <div class="card" style="width: 18rem;">
-              <img src="https://placehold.co/400" class="card-img-top" alt="...">
+              <img src="MemoryGame.png" class="card-img-top" alt="...">
               <div class="card-body">
-                <h5 class="card-title">Project 1</h5>
-                <p class="card-text">This is a project that I have done during my first year of study.</p>
-                <a href="#" class="btn btn-dark">View on github</a>
+                <h5 class="card-title">Memory Card</h5>
+                <p class="card-text">A Simple and fun game where you have to find the same card.</p>
+                <a id="playMemoryGame" class="btn btn-dark">Play the game</a>
               </div>
             </div>
             <div class="card" style="width: 18rem;">
@@ -166,14 +176,12 @@
         </div>
       </div>
 
-      <div class="position-relative start-0 vw-100" style="bottom: 0;">
-          <h1 class="text-white position-absolute start-50" style="transform: translateX(-50%);">
-              thank you for visiting my website
-          </h1>
+      <div class="position-relative start-0 vw-10" style="bottom: 0; height: 300px; z-index: -1;">
           <div class="position-absolute start-0 vw-100" style="bottom: 0;">
              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#212529" fill-opacity="1" d="M0,64L80,74.7C160,85,320,107,480,122.7C640,139,800,149,960,138.7C1120,128,1280,96,1360,80L1440,64L1440,320L1360,320C1280,320,1120,320,960,320C800,320,640,320,480,320C320,320,160,320,80,320L0,320Z"></path></svg>
           </div>
       </div>
+
       <div id="link" class="position-fixed bottom-0 end-0 p-2 bg-dark text-white rounded m-5 d-flex gap-3">
         <a href="https://github.com/tomasalexandre18" target="_blank">
           <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-github" viewBox="0 0 16 16">
@@ -187,5 +195,30 @@
           </svg>
         </a>
       </div>
+
+        <div id="iframeMemo" class="d-none justify-content-center align-items-center gap-5 vw-100 vh-100 flex-column position-fixed top-0 start-0 vw-100 vh-100">
+            <iframe src="http://localhost:8090/Memory-Game/game.html?_ijt=6d8nthph7n61p7ipeqpvud7sq4&_ij_reload=RELOAD_ON_SAVE" frameborder="0" class="game-board" id="gameBoard" style="width: 80%; height: 80%;"></iframe>
+            <div id="closeMemo" class="position-fixed top-0 end-0 p-2 bg-dark text-white rounded m-5 d-flex gap-3">
+                <a class="btn btn-dark">Close</a>
+            </div>
+        </div>
 </body>
+
+<script>
+  const memoButton = document.querySelector("#playMemoryGame")
+  const iframeMemo = document.querySelector("#iframeMemo")
+  const closeMemo = document.querySelector("#closeMemo")
+
+  memoButton.addEventListener("click", () => {
+    iframeMemo.classList.remove("d-none")
+      iframeMemo.classList.add("d-flex")
+  })
+
+    closeMemo.addEventListener("click", () => {
+        iframeMemo.classList.add("d-none")
+        iframeMemo.classList.remove("d-flex")
+    })
+
+
+</script>
 </html>

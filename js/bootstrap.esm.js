@@ -1717,10 +1717,10 @@ const CLASS_NAME_DROPUP_CENTER = 'dropup-center';
 const CLASS_NAME_DROPDOWN_CENTER = 'dropdown-center';
 const SELECTOR_DATA_TOGGLE$3 = '[data-bs-toggle="dropdown"]:not(.disabled):not(:disabled)';
 const SELECTOR_DATA_TOGGLE_SHOWN = `${SELECTOR_DATA_TOGGLE$3}.${CLASS_NAME_SHOW$6}`;
-const SELECTOR_MENU = '.dropdown-menu';
+const SELECTOR_MENU = '.dropdown-menu.html';
 const SELECTOR_NAVBAR = '.navbar';
 const SELECTOR_NAVBAR_NAV = '.navbar-nav';
-const SELECTOR_VISIBLE_ITEMS = '.dropdown-menu .dropdown-item:not(.disabled):not(:disabled)';
+const SELECTOR_VISIBLE_ITEMS = '.dropdown-menu.html .dropdown-item:not(.disabled):not(:disabled)';
 const PLACEMENT_TOP = isRTL() ? 'top-end' : 'top-start';
 const PLACEMENT_TOPEND = isRTL() ? 'top-start' : 'top-end';
 const PLACEMENT_BOTTOM = isRTL() ? 'bottom-end' : 'bottom-start';
@@ -1983,7 +1983,7 @@ class Dropdown extends BaseComponent {
         continue;
       }
 
-      // Tab navigation through the dropdown menu or events from contained inputs shouldn't close the menu
+      // Tab navigation through the dropdown menu.html or events from contained inputs shouldn't close the menu.html
       if (context._menu.contains(event.target) && (event.type === 'keyup' && event.key === TAB_KEY$1 || /input|select|option|textarea|form/i.test(event.target.tagName))) {
         continue;
       }
@@ -3784,7 +3784,7 @@ class ScrollSpy extends BaseComponent {
   constructor(element, config) {
     super(element, config);
 
-    // this._element is the observablesContainer and config.target the menu links wrapper
+    // this._element is the observablesContainer and config.target the menu.html links wrapper
     this._targetLinks = new Map();
     this._observableSections = new Map();
     this._rootElement = getComputedStyle(this._element).overflowY === 'visible' ? null : this._element;
@@ -4022,7 +4022,7 @@ const CLASS_NAME_FADE$1 = 'fade';
 const CLASS_NAME_SHOW$1 = 'show';
 const CLASS_DROPDOWN = 'dropdown';
 const SELECTOR_DROPDOWN_TOGGLE = '.dropdown-toggle';
-const SELECTOR_DROPDOWN_MENU = '.dropdown-menu';
+const SELECTOR_DROPDOWN_MENU = '.dropdown-menu.html';
 const NOT_SELECTOR_DROPDOWN_TOGGLE = `:not(${SELECTOR_DROPDOWN_TOGGLE})`;
 const SELECTOR_TAB_PANEL = '.list-group, .nav, [role="tablist"]';
 const SELECTOR_OUTER = '.nav-item, .list-group-item';
